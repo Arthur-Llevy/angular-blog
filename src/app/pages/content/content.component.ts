@@ -1,36 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {dataFake} from '../../data/dataFake'
+import { data } from '../../datas/dataFake';
 
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
-  styleUrls: ['./content.component.css']
+  styleUrl: './content.component.scss'
 })
 export class ContentComponent implements OnInit {
-  photoCover:string = ""
-  contentTitle:string = ""
-  contentDescription:string = ""
-  private id:string | null = "0"
 
-  constructor(
-    private route:ActivatedRoute
-  ) { }
+  constructor(private route: ActivatedRoute){
+
+  }
+
+  private id: string | null = '';
+
+  setValuesToComponent(id: string): void {
+    const result = data.filter(article => article.id.toString() === this.id)[0];
+    this.content = result.description;
+    this.imageUrl = result.imageUrl;
+    this.title = result.title;
+    
+  }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe( value =>
-     this.id = value.get("id")
-    )
-
-    this.setValuesToComponent(this.id)
+    this.route.paramMap.subscribe(value => this.id = value.get('id'));
+    this.setValuesToComponent(this.id!);
   }
 
-  setValuesToComponent(id:string | null){
-    const result = dataFake.filter(article => article.id == id)[0]
-
-    this.contentTitle = result.title
-    this.contentDescription = result.description
-    this.photoCover = result.photoCover
-  }
+  @Input() imageUrl: string = '';
+  @Input() title: string = '';
+  @Input() content: string = '';
 
 }
+
+

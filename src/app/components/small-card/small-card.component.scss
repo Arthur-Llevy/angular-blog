@@ -1,0 +1,27 @@
+.container__small-card {
+	width: 100%;
+	margin-bottom: 20px;
+
+	.container__smal-card-content {
+		display: flex;
+		flex-direction: row;
+	}
+
+	img {
+		width: 200px;
+		min-width: 200px;
+		padding: 0  20px 20px 0;
+	}
+}
+
+hr {
+	margin-bottom: 20px;
+}
+
+h1 {
+	font-size: 20px;
+
+	a {
+		color: #eee;
+	}
+}

@@ -1,0 +1,33 @@
+%content-top-spacing {
+	margin-top: 10px;
+}
+
+.container__big-card {
+	width: 400px;
+	height: 600px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;	
+	margin: 0 20px;
+
+	img {
+		width: 100%;
+		min-width: 400px;
+	}
+
+	h1 {
+		@extend %content-top-spacing;
+		font-size: 20px;
+	}
+
+	p {		
+		@extend %content-top-spacing;
+	}
+
+	p > a {
+		color: gray;
+	}
+
+
+}
